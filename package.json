@@ -19,6 +19,7 @@
     "react-animation-on-scroll": "^5.1.0",
     "react-bootstrap": "^2.10.1",
     "react-dom": "^18.2.0",
+    "react-heart": "^1.0.6",
     "react-router-dom": "^6.22.1",
     "react-scripts": "5.0.1",
     "reactstrap": "^9.2.2",

@@ -1,0 +1,47 @@
+.home-detail-container {
+  padding: 32px;
+  display: flex;
+  flex: 1;
+}
+.home-detail-pic-group {
+  width: 30%;
+}
+
+.home-detail-img {
+  width: 100%;
+}
+.home-detail-pic-list {
+  display: flex;
+}
+.home-detail-pic-item {
+  width: 20%;
+}
+.home-detail-content {
+  margin-left: 30px;
+  line-height: 2;
+}
+.home-detail-name {
+  font-weight: 400;
+  font-size: 30px;
+}
+
+.home-detail-set {
+  padding: 6px 12px;
+  background-color: rgb(72, 197, 235);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-left: 100px;
+}
+.home-detail-set:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+.home-detail-link {
+  text-decoration: none;
+  color: white;
+}
+.home-detail-icon {
+  display: flex;
+  align-items: center;
+}

@@ -6,6 +6,7 @@ import {
   faBed,
   faKitchenSet,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 function HomeItem() {
   return (
@@ -30,8 +31,16 @@ function HomeItem() {
           </div>
         </div>
         <div className="item-group-btn">
-          <button className="item-detail">Xem chi tiết</button>
-          <button className="item-set-calendar">Đặt lịch</button>
+          <button className="item-detail">
+            <Link to="/home" className="item-link">
+              Xem chi tiết
+            </Link>
+          </button>
+          <button className="item-set-calendar">
+            <Link to="/set-date" className="item-link">
+              Đặt lịch
+            </Link>
+          </button>
         </div>
       </div>
     </div>
