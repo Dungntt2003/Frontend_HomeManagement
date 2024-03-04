@@ -1,0 +1,77 @@
+.admin-info-container {
+  padding: 32px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  line-height: 1.6;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+.admin-infor-wrap {
+  width: 50%;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.admin-info-header {
+  font-weight: 400;
+  text-align: center;
+}
+
+.admin-info-mission {
+  text-align: center;
+  margin: 30px 0;
+  background-color: #ff9aa2;
+  padding: 16px;
+  color: white;
+  border-radius: 5px;
+}
+
+.mission-name {
+  font-weight: 300;
+  font-size: 30px;
+}
+
+.admin-info-homer {
+  margin: 50px 0;
+}
+
+.homer-wrap {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  background-color: #b5ddd1;
+  color: white;
+  border-radius: 5px;
+}
+
+.homer-pic {
+  width: 100%;
+}
+.homer-img {
+  width: 100%;
+}
+.homer-content {
+  margin-left: 16px;
+}
+
+.admin-info-home {
+  margin: 30px 0;
+  padding: 16px;
+  background-color: #027353;
+  color: white;
+  border-radius: 5px;
+}

@@ -1,0 +1,47 @@
+.item-wrap {
+  width: 22%;
+}
+
+.item-container {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #e7e2e2;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 2px;
+}
+
+.item-img {
+  width: 100%;
+}
+
+.item-name {
+  font-weight: 400;
+  font-size: 25px;
+}
+.item-price {
+  margin-bottom: 6px;
+}
+.item-icon {
+  display: flex;
+  align-items: center;
+}
+.item-icon-item {
+  margin-right: 20px;
+  color: #726868;
+}
+.item-group-btn {
+  margin: 8px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.item-group-btn button {
+  padding: 6px 12px;
+  background-color: rgb(72, 197, 235);
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+.item-group-btn button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}

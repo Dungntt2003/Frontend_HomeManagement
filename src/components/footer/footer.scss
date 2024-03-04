@@ -1,0 +1,33 @@
+.footer-container {
+  padding: 32px;
+  background-color: #00abd3;
+  color: white;
+  border-radius: 5px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+}
+
+.footer-header {
+  margin-right: 20px;
+  font-weight: 400;
+  font-size: 30px;
+}
+.footer-pic {
+  width: 50px;
+  margin-right: 20px;
+}
+.footer-img {
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.footer-slogan {
+  font-weight: bold;
+}
