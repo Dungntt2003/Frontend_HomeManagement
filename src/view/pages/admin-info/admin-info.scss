@@ -8,6 +8,7 @@
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
+  color: white;
 }
 
 .admin-infor-wrap {
@@ -74,4 +75,33 @@
   background-color: #027353;
   color: white;
   border-radius: 5px;
+}
+
+.home-svd {
+  background-color: #d97904;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 5px;
+  text-align: center;
+}
+.home-svd-pic,
+.home-nhasv-pic {
+  width: 40%;
+  margin: 0 auto;
+  margin-bottom: 16px;
+}
+.home-svd-img,
+.home-nhasv-img {
+  width: 100%;
+}
+.home-svd-des,
+.home-nhasv-body {
+  line-height: 1.8;
+}
+.home-nhasv {
+  background-color: #a986ee;
+  padding: 16px;
+  border-radius: 5px;
+  margin-top: 24px;
+  text-align: center;
 }
