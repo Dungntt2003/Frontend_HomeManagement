@@ -5,10 +5,14 @@ import MainLayout from "../../components/layout/main-layout";
 import HomeDetail from "../pages/home-detail/home-detail";
 import SetDate from "../pages/set-date/set-date";
 import Announce from "../pages/announce/announce";
+import SignUp from "../pages/sinup/signup";
+import SignIn from "../pages/signin/signin";
 function AllRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Navigate to={"/homepage"} />} />
+      <Route path="/signup" element={<MainLayout component={SignUp} />} />
+      <Route path="/signin" element={<MainLayout component={SignIn} />} />
       <Route path="/homepage" element={<MainLayout component={HomePage} />} />
       <Route path="/about" element={<MainLayout component={AdminInfo} />} />
       <Route path="/home" element={<MainLayout component={HomeDetail} />} />
