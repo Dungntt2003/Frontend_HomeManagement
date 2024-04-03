@@ -1,16 +1,54 @@
 import "./signin.scss";
-import { Link } from "react-router-dom";
-import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, Form, Input, Alert } from "antd";
+import authApi from "../../../api/authApi";
 
 function SignIn() {
+  const getName = (name) => {
+    const nameParts = name.split("@");
+    const result = nameParts[0];
+    return result;
+  };
+  const navigate = useNavigate();
+  const [alert, setAlert] = useState("null");
   const onFinish = (values) => {
-    console.log("Received values of form: ", values);
+    const sendPostRequest = async () => {
+      try {
+        const response = await authApi.login(values);
+        const userInfo = {
+          email: values.Email,
+          name: getName(values.Email),
+        };
+        console.log(userInfo);
+        localStorage.setItem("user", JSON.stringify(userInfo));
+        console.log(response);
+        setAlert("true");
+        setTimeout(() => {
+          navigate("/homepage");
+        }, 3000);
+      } catch (e) {
+        console.log(e);
+        setAlert("false");
+      }
+    };
+    sendPostRequest();
   };
   return (
     <div className="login-container">
       <div className="login-wrap">
+        {alert === "true" && (
+          <Alert
+            message="Login successfully"
+            closable
+            type="success"
+            showIcon
+          />
+        )}
+        {alert === "false" && (
+          <Alert message="Invalid login" closable type="error" showIcon />
+        )}
         <h2 className="login-header">Đăng nhập</h2>
         <Form
           name="normal_login"
@@ -35,7 +73,7 @@ function SignIn() {
             />
           </Form.Item>
           <Form.Item
-            name="password"
+            name="Password"
             rules={[
               {
                 required: true,

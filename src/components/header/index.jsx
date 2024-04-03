@@ -6,6 +6,8 @@ import Logo from "../../assets/images/Logo.png";
 import "./header.scss";
 import { Link } from "react-router-dom";
 function Header() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user);
   return (
     <div>
       <Navbar bg="primary" data-bs-theme="dark">
@@ -29,18 +31,33 @@ function Header() {
               </Link>
             </Nav.Link>
           </Nav>
-          <Nav>
-            <Button variant="primary" className="mr-2">
-              <Link to="/signup" className="homepage-link">
-                Đăng ký
-              </Link>
-            </Button>
-            <Button variant="primary">
-              <Link to="/signin" className="homepage-link">
-                Đăng nhập
-              </Link>
-            </Button>
-          </Nav>
+          {user ? (
+            <Nav>
+              <Button variant="primary" className="mr-2">
+                <Link to="/homepage" className="homepage-link">
+                  Hello, {user.name}
+                </Link>
+              </Button>
+              <Button variant="primary">
+                <Link to="/logout" className="homepage-link">
+                  Đăng xuất
+                </Link>
+              </Button>
+            </Nav>
+          ) : (
+            <Nav>
+              <Button variant="primary" className="mr-2">
+                <Link to="/signup" className="homepage-link">
+                  Đăng ký
+                </Link>
+              </Button>
+              <Button variant="primary">
+                <Link to="/signin" className="homepage-link">
+                  Đăng nhập
+                </Link>
+              </Button>
+            </Nav>
+          )}
         </Container>
       </Navbar>
     </div>

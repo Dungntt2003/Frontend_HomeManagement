@@ -1,6 +1,11 @@
 import "./signup.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import React from "react";
 import { Button, Checkbox, Form, Input, DatePicker, Select } from "antd";
+import moment from "moment";
+import authApi from "../../../api/authApi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const { Option } = Select;
 const formItemLayout = {
@@ -35,9 +40,54 @@ const tailFormItemLayout = {
 };
 
 function SignUp() {
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
+  const navigate = useNavigate();
+  const onFinish = (e) => {
+    const selectedDate = e.DatePicker;
+    const Dob = moment(selectedDate).format("YYYY-MM-DD");
+    const postRequest = async () => {
+      const values = {
+        Email: e.Email,
+        Password: e.Password,
+        Name: e.Name,
+        Dob: Dob,
+        Gender: e.Gender,
+        University: e.University,
+      };
+      try {
+        const response = await authApi.register(values);
+        console.log(response);
+        toast.success("Register successfully", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          // transition: Bounce,
+        });
+        setTimeout(() => {
+          navigate("/signin");
+        }, 3000);
+      } catch (e) {
+        console.log(e);
+        toast.error("Register failed", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          // transition: Bounce,
+        });
+      }
+    };
+    postRequest();
   };
+
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select
@@ -67,7 +117,7 @@ function SignUp() {
           scrollToFirstError
         >
           <Form.Item
-            name="email"
+            name="Email"
             label="E-mail"
             rules={[
               {
@@ -84,7 +134,7 @@ function SignUp() {
           </Form.Item>
 
           <Form.Item
-            name="password"
+            name="Password"
             label="Mật khẩu"
             rules={[
               {
@@ -100,7 +150,7 @@ function SignUp() {
           <Form.Item
             name="confirm"
             label="Nhập lại mật khẩu"
-            dependencies={["password"]}
+            dependencies={["Password"]}
             hasFeedback
             rules={[
               {
@@ -109,7 +159,7 @@ function SignUp() {
               },
               ({ getFieldValue }) => ({
                 validator(_, value) {
-                  if (!value || getFieldValue("password") === value) {
+                  if (!value || getFieldValue("Password") === value) {
                     return Promise.resolve();
                   }
                   return Promise.reject(new Error("Mật khẩu không khớp"));
@@ -135,7 +185,7 @@ function SignUp() {
             <Input />
           </Form.Item>
           <Form.Item
-            name="gender"
+            name="Gender"
             label="Giới tính"
             rules={[
               {
@@ -151,7 +201,7 @@ function SignUp() {
           </Form.Item>
 
           <Form.Item
-            name="phone"
+            name="Phone"
             label="SDT"
             rules={[
               {
@@ -183,14 +233,14 @@ function SignUp() {
 
           <Form.Item
             label="Năm sinh"
-            name="DatePicker"
+            name="Dob"
             rules={[{ required: true, message: "Hãy chọn năm sinh" }]}
           >
             <DatePicker />
           </Form.Item>
 
           <Form.Item
-            name="agreement"
+            name="Agreement"
             valuePropName="checked"
             rules={[
               {
@@ -213,6 +263,7 @@ function SignUp() {
             hay <Link to="/signin">Đăng nhập ngay</Link>
           </Form.Item>
         </Form>
+        <ToastContainer />
       </div>
     </div>
   );
