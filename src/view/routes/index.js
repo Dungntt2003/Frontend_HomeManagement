@@ -28,7 +28,10 @@ function AllRoutes() {
       />
       <Route path="/homepage" element={<MainLayout component={HomePage} />} />
       <Route path="/about" element={<MainLayout component={AdminInfo} />} />
-      <Route path="/home" element={<MainLayout component={HomeDetail} />} />
+      <Route
+        path="/homeDetail/:id"
+        element={<MainLayout component={HomeDetail} />}
+      />
       <Route path="/set-date" element={<MainLayout component={SetDate} />} />
       <Route path="/announce" element={<MainLayout component={Announce} />} />
       <Route path="/logout" element={<HeaderOnly component={Logout} />} />

@@ -5,7 +5,7 @@ import Img3 from "../../../assets/images/t3.jpg";
 import Img4 from "../../../assets/images/t4.jpg";
 import Img5 from "../../../assets/images/t5.jpg";
 import Img6 from "../../../assets/images/t6.jpg";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import React, { useState } from "react";
 import Heart from "react-heart";
 
@@ -16,6 +16,8 @@ function HomeDetail() {
   const handleSetImage = (image) => {
     setCurrentImage(image);
   };
+  const { id } = useParams();
+  console.log(id);
   return (
     <div className="home-detail-container">
       <div className="home-detail-pic-group">

@@ -1,14 +1,10 @@
 import "./homeItem.scss";
 import HomeItemImage from "../../../assets/images/t1.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faToilet,
-  faBed,
-  faKitchenSet,
-} from "@fortawesome/free-solid-svg-icons";
+import { faToilet, faBed } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-
-function HomeItem() {
+import formatMoney from "../../../components/displayMoney";
+function HomeItem(props) {
   return (
     <div className="item-wrap">
       <div className="item-container">
@@ -16,23 +12,20 @@ function HomeItem() {
           <img src={HomeItemImage} alt="anh home" className="item-img" />
         </div>
         <div className="item-content">
-          <h4 className="item-name">P306A-B10</h4>
-          <p className="item-price">Giá: 2.000.000</p>
+          <h4 className="item-name">{props.home.Name}</h4>
+          <p className="item-price">Giá: {formatMoney(props.home.Price)}</p>
           <div className="item-icon">
             <div className="item-icon-item">
-              <FontAwesomeIcon icon={faToilet} /> 1
+              <FontAwesomeIcon icon={faToilet} /> {props.home.toilet}
             </div>
             <div className="item-icon-item">
-              <FontAwesomeIcon icon={faBed} /> 2
-            </div>
-            <div className="item-icon-item">
-              <FontAwesomeIcon icon={faKitchenSet} /> 1
+              <FontAwesomeIcon icon={faBed} /> {props.home.bathroom}
             </div>
           </div>
         </div>
         <div className="item-group-btn">
           <button className="item-detail">
-            <Link to="/home" className="item-link">
+            <Link to={`/homeDetail/${props.home.Name}`} className="item-link">
               Xem chi tiết
             </Link>
           </button>
