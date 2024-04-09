@@ -1,8 +1,14 @@
 import Logo from "../../assets/images/Logo.png";
 import "./footer.scss";
+import { useLocation } from "react-router-dom";
 function Footer() {
+  const location = useLocation();
   return (
-    <div className="footer-container">
+    <div
+      className={
+        location.pathname === "/signin" ? "footer-wrap" : "footer-container"
+      }
+    >
       <div className="footer-content">
         <div className="footer-logo">
           <div className="footer-pic">

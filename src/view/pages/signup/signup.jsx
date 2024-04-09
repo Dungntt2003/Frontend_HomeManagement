@@ -56,7 +56,7 @@ function SignUp() {
       try {
         const response = await authApi.register(values);
         console.log(response);
-        toast.success("Register successfully", {
+        toast.success("Đăng ký thành công", {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,
@@ -72,7 +72,7 @@ function SignUp() {
         }, 3000);
       } catch (e) {
         console.log(e);
-        toast.error("Register failed", {
+        toast.error("Đăng ký thất bại", {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,

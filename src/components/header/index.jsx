@@ -5,15 +5,22 @@ import Navbar from "react-bootstrap/Navbar";
 import Logo from "../../assets/images/Logo.png";
 import "./header.scss";
 import { Link } from "react-router-dom";
+// import { useEffect } from "react";
 function Header() {
   const user = JSON.parse(localStorage.getItem("user"));
   console.log(user);
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  };
   return (
     <div>
-      <Navbar bg="primary" data-bs-theme="dark">
+      <Navbar bg="primary" data-bs-theme="dark" className="homepage-nav">
         <Container>
           <Navbar.Brand>
-            <Link to="/homepage" className="homepage-link">
+            <Link to="/homepage" className="homepage-link homepage-logo">
               <img
                 alt=""
                 src={Logo}
@@ -27,7 +34,7 @@ function Header() {
           <Nav className="me-auto">
             <Nav.Link>
               <Link to="/about" className="homepage-link">
-                About
+                Về nhà trọ
               </Link>
             </Nav.Link>
           </Nav>
@@ -39,7 +46,11 @@ function Header() {
                 </Link>
               </Button>
               <Button variant="primary">
-                <Link to="/logout" className="homepage-link">
+                <Link
+                  to="/homepage"
+                  className="homepage-link"
+                  onClick={handleLogout}
+                >
                   Đăng xuất
                 </Link>
               </Button>

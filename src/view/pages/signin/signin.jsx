@@ -40,14 +40,14 @@ function SignIn() {
       <div className="login-wrap">
         {alert === "true" && (
           <Alert
-            message="Login successfully"
+            message="Đăng nhập thành công"
             closable
             type="success"
             showIcon
           />
         )}
         {alert === "false" && (
-          <Alert message="Invalid login" closable type="error" showIcon />
+          <Alert message="Sai mật khẩu" closable type="error" showIcon />
         )}
         <h2 className="login-header">Đăng nhập</h2>
         <Form
