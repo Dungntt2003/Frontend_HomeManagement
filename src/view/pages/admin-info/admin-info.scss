@@ -5,7 +5,8 @@
   justify-content: center;
   max-width: 100%;
   line-height: 1.6;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #bce2e4, #5db2d3, #3088a8, #056886);
+  // background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   color: white;
@@ -35,7 +36,7 @@
 .admin-info-mission {
   text-align: center;
   margin: 30px 0;
-  background-color: #ff9aa2;
+  background-color: #be626a;
   padding: 16px;
   color: white;
   border-radius: 5px;
@@ -54,7 +55,7 @@
   display: flex;
   justify-content: space-between;
   padding: 16px;
-  background-color: #b5ddd1;
+  background-color: #3677c2;
   color: white;
   border-radius: 5px;
 }
@@ -76,7 +77,13 @@
   color: white;
   border-radius: 5px;
 }
-
+.home-img {
+  width: 100%;
+  margin: auto 0;
+}
+.home-pic {
+  width: 100%;
+}
 .home-svd {
   background-color: #d97904;
   padding: 16px;

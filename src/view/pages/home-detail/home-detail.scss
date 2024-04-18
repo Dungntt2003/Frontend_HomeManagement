@@ -2,6 +2,7 @@
   padding: 32px;
   display: flex;
   flex: 1;
+  font-size: 18px;
 }
 .home-detail-pic-group {
   width: 30%;
@@ -24,8 +25,15 @@
   font-weight: 400;
   font-size: 30px;
 }
-
-.home-detail-set {
+.home-detail-device {
+  font-weight: 400;
+  font-size: 19px;
+}
+.home-detail-announce {
+  color: rgb(207, 44, 44);
+}
+.home-detail-set,
+.home-detail-disabled {
   padding: 4px 16px;
   background-color: rgb(72, 197, 235);
   color: white;
@@ -44,4 +52,12 @@
 .home-detail-icon {
   display: flex;
   align-items: center;
+}
+
+.home-detail-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.home-detail-disabled-link {
+  cursor: not-allowed;
 }

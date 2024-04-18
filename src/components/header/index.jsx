@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 // import { useEffect } from "react";
 function Header() {
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user);
+  // console.log(user);
   const handleLogout = () => {
     localStorage.removeItem("user");
     setTimeout(() => {

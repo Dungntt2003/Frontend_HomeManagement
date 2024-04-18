@@ -2,12 +2,13 @@ import "./admin-info.scss";
 import AdminImage from "../../../assets/images/admin-image.jpg";
 import Svd from "../../../assets/images/sanvd.jpeg";
 import nhash from "../../../assets/images/phongsh.jpg";
+import ktx from "../../../assets/images/ktx.jpg";
 
 function AdminInfo() {
   return (
     <div className="admin-info-container">
       <div className="admin-infor-wrap">
-        <h2 className="admin-info-header">ABOUT</h2>
+        <h2 className="admin-info-header">VỀ NHÀ TRỌ</h2>
         <div className="admin-info-mission">
           <h3 className="mission-name">Mục tiêu</h3>
           <p className="mission-content">
@@ -39,16 +40,25 @@ function AdminInfo() {
           </div>
         </div>
         <div className="admin-info-home">
-          <h4 className="home-name">Nhà trọ Ốc sên</h4>
-          <p className="home-detail-info">
-            Thời gian hoạt đông: 2/2/2014 <br />
-            Tổng số phòng: 50 phòng <br />
-            Giá giao động: 1tr - 2tr/người <br />
-            Điện: 2k/số <br />
-            Nước: miến phí <br />
-            Quy định: Giữ trật tự, vệ sinh chung, giờ giới nghiêm là 23h. <br />
-            Hiện trọ chứa 112 sinh viên đến các từ các trường đại học.
-          </p>
+          <div className="home-wrap">
+            <div className="home-body">
+              <h4 className="home-name">Nhà trọ Ốc sên</h4>
+              <p className="home-detail-info">
+                Thời gian hoạt đông: 2/2/2014 <br />
+                Tổng số phòng: 80 phòng <br />
+                Bao gồm các tòa nhà: B3, B9, B10 <br />
+                Giá giao động: 1tr - 2tr/người <br />
+                Điện: 2k/số <br />
+                Nước: miễn phí <br />
+                Quy định: Giữ trật tự, vệ sinh chung, giờ giới nghiêm là 23h.{" "}
+                <br />
+                Hiện trọ chứa 112 sinh viên đến các từ các trường đại học.
+              </p>
+            </div>
+            <div className="home-img">
+              <img src={ktx} alt="anh ktx" className="home-pic" />
+            </div>
+          </div>
         </div>
         <div className="home-about">
           <div className="home-svd">

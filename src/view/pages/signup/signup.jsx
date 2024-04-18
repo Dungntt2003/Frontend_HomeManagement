@@ -173,7 +173,6 @@ function SignUp() {
           <Form.Item
             name="Name"
             label="Họ và tên"
-            tooltip="Tên bạn là gì?"
             rules={[
               {
                 required: true,
