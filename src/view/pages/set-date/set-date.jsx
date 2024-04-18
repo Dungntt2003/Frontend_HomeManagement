@@ -1,6 +1,11 @@
 import "./set-date.scss";
 import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { Button, Form, Input, DatePicker, Select } from "antd";
+import bookScheduleApi from "../../../api/bookScheduleApi";
+import moment from "moment";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const { Option } = Select;
 const formItemLayout = {
   labelCol: {
@@ -33,6 +38,9 @@ const tailFormItemLayout = {
   },
 };
 function SetDate() {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const userInfo = JSON.parse(localStorage.getItem("user"));
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select
@@ -46,12 +54,55 @@ function SetDate() {
     </Form.Item>
   );
   const onFinish = (e) => {
-    console.log("Success:", e);
+    const selectedDate = e.Time;
+    const date = moment(selectedDate).format("YYYY-MM-DD");
+    const params = {
+      user_id: userInfo.id,
+      name: id,
+      date: date,
+      user_name: e.Name,
+      phone: e.Phone,
+      note: e.Note,
+    };
+
+    const postASchedule = async () => {
+      try {
+        const res = await bookScheduleApi.createBookSchedule(params);
+        console.log(res);
+        toast.success("Đăng ký lịch thành công", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          // transition: Bounce,
+        });
+        setTimeout(() => {
+          navigate(`/bookSchedule/${id}/result`);
+        }, 3000);
+      } catch (error) {
+        console.log(error);
+        toast.error("Đăng ký thất bại, vui lòng thử lại", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      }
+    };
+    postASchedule();
   };
   return (
     <div className="set-date-container">
       <div>
-        <h2 className="set-date-header">Đăng ký thời gian xem phòng 306-B10</h2>
+        <h2 className="set-date-header">Đăng ký thời gian xem phòng {id}</h2>
         <>
           <Form
             {...formItemLayout}
@@ -124,6 +175,7 @@ function SetDate() {
               </Button>
             </Form.Item>
           </Form>
+          <ToastContainer />
         </>
       </div>
     </div>

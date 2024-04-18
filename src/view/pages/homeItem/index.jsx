@@ -30,7 +30,7 @@ function HomeItem(props) {
             </Link>
           </button>
           <button className="item-set-calendar">
-            <Link to="/set-date" className="item-link">
+            <Link to={`/bookSchedule/${props.home.Name}`} className="item-link">
               Đặt lịch
             </Link>
           </button>

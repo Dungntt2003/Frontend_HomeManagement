@@ -17,13 +17,14 @@ function SignIn() {
     const sendPostRequest = async () => {
       try {
         const response = await authApi.login(values);
+        console.log(response);
         const userInfo = {
           email: values.Email,
           name: getName(values.Email),
+          id: response.data.id,
         };
         console.log(userInfo);
         localStorage.setItem("user", JSON.stringify(userInfo));
-        console.log(response);
         setAlert("true");
         setTimeout(() => {
           navigate("/homepage");

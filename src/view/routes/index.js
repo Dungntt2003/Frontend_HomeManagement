@@ -7,6 +7,8 @@ import SetDate from "../pages/set-date/set-date";
 import Announce from "../pages/announce/announce";
 import SignUp from "../pages/signup/signup";
 import SignIn from "../pages/signin/signin";
+import HeaderOnly from "../../components/layout/header-only";
+import BookScheduleResult from "../pages/set-date/bookScheduleResult/bookResult";
 function AllRoutes() {
   const user = localStorage.getItem("user");
   return (
@@ -30,7 +32,14 @@ function AllRoutes() {
         path="/homeDetail/:id"
         element={<MainLayout component={HomeDetail} />}
       />
-      <Route path="/set-date" element={<MainLayout component={SetDate} />} />
+      <Route
+        path="/bookSchedule/:id"
+        element={<MainLayout component={SetDate} />}
+      />
+      <Route
+        path="/bookSchedule/:id/result"
+        element={<HeaderOnly component={BookScheduleResult} />}
+      />
       <Route path="/announce" element={<MainLayout component={Announce} />} />
     </Routes>
   );

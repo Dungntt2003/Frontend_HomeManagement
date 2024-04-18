@@ -133,7 +133,7 @@ function HomeDetail() {
             }
           >
             <Link
-              to="/set-date"
+              to={`/bookSchedule/${id}`}
               className={
                 room["Max people"] === room["Number people"]
                   ? "home-detail-disabled-link home-detail-link"
