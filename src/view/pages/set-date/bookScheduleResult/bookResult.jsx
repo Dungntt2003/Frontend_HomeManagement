@@ -1,6 +1,6 @@
 import "./bookResult.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFaceLaugh } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faFaceLaugh } from "@fortawesome/free-solid-svg-icons";
 
 function BookScheduleResult() {
   return (
@@ -11,7 +11,7 @@ function BookScheduleResult() {
       </h2>
       <h4 className="book-result-thank">
         Trân trọng và cảm ơn
-        <FontAwesomeIcon icon={faFaceLaugh} className="book-result-icon" />
+        {/* <FontAwesomeIcon icon={faFaceLaugh} className="book-result-icon" /> */}
       </h4>
     </div>
   );

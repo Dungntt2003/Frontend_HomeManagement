@@ -46,7 +46,17 @@
   cursor: pointer;
   opacity: 0.8;
 }
-.item-link {
+.item-link,
+.item-link-disabled {
   text-decoration: none;
   color: white;
+}
+
+.item-link-disabled:hover {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.item-warn {
+  font-size: 14px;
+  color: red;
 }

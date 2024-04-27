@@ -1,10 +1,4 @@
 import "./home-detail.scss";
-import Img1 from "../../../assets/images/t1.jpg";
-import Img2 from "../../../assets/images/t2.jpg";
-import Img3 from "../../../assets/images/t3.jpg";
-import Img4 from "../../../assets/images/t4.jpg";
-import Img5 from "../../../assets/images/t5.jpg";
-import Img6 from "../../../assets/images/t6.jpg";
 import { Link, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Heart from "react-heart";
@@ -14,19 +8,20 @@ import { Checkmark } from "react-checkmark";
 
 function HomeDetail() {
   const [room, setRoom] = useState({});
-  const Images = [Img2, Img3, Img4, Img5, Img6];
+  const [images, setImages] = useState([]);
   const [active, setActive] = useState(false);
-  const [currentImage, setCurrentImage] = useState(Img1);
+  const [currentImage, setCurrentImage] = useState();
   const handleSetImage = (image) => {
     setCurrentImage(image);
   };
   const { id } = useParams();
-  // console.log(id);
   useEffect(() => {
     const getDetailRoom = async () => {
       try {
         const res = await homeApi.getAHome(id);
         console.log(res.data[0]);
+        setImages(res.data[0].images);
+        setCurrentImage(res.data[0].images[0]);
         setRoom(res.data[0]);
       } catch (err) {
         console.log(err);
@@ -39,17 +34,17 @@ function HomeDetail() {
       <div className="home-detail-pic-group">
         <div className="home-detail-pic-main">
           <img
-            src={currentImage}
+            src={`http://localhost:8000/images/${currentImage}`}
             alt="Anh minh hoa"
             className="home-detail-img"
           />
         </div>
         <div className="home-detail-pic-list">
-          {Images &&
-            Images.map((img, index) => {
+          {images &&
+            images.map((img, index) => {
               return (
                 <img
-                  src={img}
+                  src={`http://localhost:8000/images/${img}`}
                   alt="Anh minh hoa"
                   className="home-detail-pic-item"
                   onMouseOver={() => handleSetImage(img)}
