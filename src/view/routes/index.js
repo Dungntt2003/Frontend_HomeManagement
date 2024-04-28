@@ -38,7 +38,7 @@ function AllRoutes() {
         element={<MainLayout component={SetDate} />}
       />
       <Route
-        path="/bookSchedule/:id/result"
+        path="/bookSchedule/result"
         element={<HeaderOnly component={BookScheduleResult} />}
       />
       <Route path="/announce" element={<MainLayout component={Announce} />} />

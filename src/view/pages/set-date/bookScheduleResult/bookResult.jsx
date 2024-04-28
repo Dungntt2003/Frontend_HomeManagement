@@ -1,18 +1,32 @@
 import "./bookResult.scss";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faFaceLaugh } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
+import BookScheduleItem from "./bookScheduleItem/bookScheduleItem";
+import bookScheduleApi from "../../../../api/bookScheduleApi";
 
 function BookScheduleResult() {
+  const userInfo = JSON.parse(localStorage.getItem("user"));
+  const user_id = userInfo.id;
+  const [bookSchedules, setBookSchedules] = useState([]);
+  useEffect(() => {
+    const getSchedules = async () => {
+      try {
+        const response = await bookScheduleApi.getBookSchedulesByUser(user_id);
+        setBookSchedules(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getSchedules();
+  }, [user_id]);
+
+  const listBookItems = bookSchedules.map((item, index) => (
+    <BookScheduleItem item={item} />
+  ));
+
   return (
-    <div>
-      <h2 className="book-result">
-        Hiện đang chờ kết quả từ chủ trọ, bạn vui lòng quay lại sau để xem kết
-        quả
-      </h2>
-      <h4 className="book-result-thank">
-        Trân trọng và cảm ơn
-        {/* <FontAwesomeIcon icon={faFaceLaugh} className="book-result-icon" /> */}
-      </h4>
+    <div className="book-list-container">
+      <h2 className="book-list-header">KẾT QUẢ ĐẶT LỊCH</h2>
+      <div className="book-list-item">{listBookItems}</div>
     </div>
   );
 }

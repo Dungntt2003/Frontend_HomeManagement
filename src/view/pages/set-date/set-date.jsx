@@ -81,7 +81,7 @@ function SetDate() {
           // transition: Bounce,
         });
         setTimeout(() => {
-          navigate(`/bookSchedule/${id}/result`);
+          navigate(`/bookSchedule/result`);
         }, 3000);
       } catch (error) {
         console.log(error);

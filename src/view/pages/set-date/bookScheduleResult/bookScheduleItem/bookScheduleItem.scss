@@ -1,0 +1,81 @@
+.book-item-container {
+  width: 100%;
+  margin: 32px 0;
+  padding: 16px;
+  background-color: #f3e8e8;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 40px;
+  box-shadow: 1px 1px 1px 1px;
+  display: block;
+}
+.book-item-column {
+  width: 100%;
+  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+td {
+  display: inline-block;
+  text-align: center;
+  min-width: 150px;
+}
+.book-item-accept {
+  padding: 2px;
+}
+.book-item-number {
+  margin-left: 16px;
+  padding: 8px 16px;
+  background-color: pink;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  min-width: 45px;
+  margin-right: 32px;
+}
+.book-item-date,
+.book-item-accepted {
+  position: relative;
+  display: inline-block;
+}
+.book-item-note {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 60%;
+  width: 150%;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+.book-item-schedule {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: -100%;
+  width: 150%;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}
+
+.book-item-date:hover .book-item-note {
+  display: block;
+  cursor: pointer;
+}
+
+.book-item-accepted:hover .book-item-schedule {
+  display: block;
+  cursor: pointer;
+}
+.book-item-result {
+  padding: 4px 8px;
+  border: 1px solid rgb(228, 72, 25);
+  background-color: white;
+  border-radius: 25px;
+}
+.book-item-accepted {
+  border: 1px solid rgb(32, 228, 25);
+}
