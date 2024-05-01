@@ -48,7 +48,7 @@ function Header() {
           {user ? (
             <Nav>
               <Button variant="primary" className="mr-2">
-                <Link to="/homepage" className="homepage-link">
+                <Link to="/profile" className="homepage-link">
                   Hello, {user.name}
                 </Link>
               </Button>

@@ -9,7 +9,7 @@ import SignUp from "../pages/signup/signup";
 import SignIn from "../pages/signin/signin";
 import HeaderOnly from "../../components/layout/header-only";
 import BookScheduleResult from "../pages/set-date/bookScheduleResult/bookResult";
-import TestImages from "../pages/test-images";
+import Profile from "../pages/profile/profile";
 function AllRoutes() {
   const user = localStorage.getItem("user");
   return (
@@ -42,7 +42,7 @@ function AllRoutes() {
         element={<HeaderOnly component={BookScheduleResult} />}
       />
       <Route path="/announce" element={<MainLayout component={Announce} />} />
-      <Route path="/testImages" element={<TestImages />} />
+      <Route path="/profile" element={<MainLayout component={Profile} />} />
     </Routes>
   );
 }

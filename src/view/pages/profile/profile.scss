@@ -1,0 +1,33 @@
+.profile-container {
+  display: flex;
+  justify-content: center;
+  min-width: 800px;
+  padding: 32px 0;
+}
+
+.profile-wrap {
+  min-width: 800px;
+}
+
+.profile-header {
+  text-align: center;
+  font-weight: 400;
+}
+.profile-body {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 32px;
+}
+.profile-info {
+  min-width: 550px;
+}
+.profile-info label {
+  margin: 8px 0;
+}
+
+.profile-info button {
+  margin-top: 16px;
+}
+.profile-avatar {
+  margin-left: 8px;
+}

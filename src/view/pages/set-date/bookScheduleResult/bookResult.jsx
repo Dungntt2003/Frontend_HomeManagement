@@ -25,8 +25,14 @@ function BookScheduleResult() {
 
   return (
     <div className="book-list-container">
-      <h2 className="book-list-header">KẾT QUẢ ĐẶT LỊCH</h2>
-      <div className="book-list-item">{listBookItems}</div>
+      {bookSchedules.length > 0 ? (
+        <>
+          <h2 className="book-list-header">KẾT QUẢ ĐẶT LỊCH</h2>
+          <div className="book-list-item">{listBookItems}</div>
+        </>
+      ) : (
+        <h1 className="book-list-not-found">Bạn chưa đăng ký xem phòng</h1>
+      )}
     </div>
   );
 }
