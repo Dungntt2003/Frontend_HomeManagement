@@ -1,0 +1,44 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+.dashboard-container {
+  height: 100%;
+  display: flex;
+}
+
+.dashboard-sidebar {
+  width: 20%;
+  background-color: #fff;
+  box-shadow: 2px 2px 15px 2px rgba($color: #000000, $alpha: 0.15);
+  padding-top: 30px;
+  height: 100vh;
+}
+.dashboard-content {
+  width: 80%;
+}
+
+.sidebar-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.sidebar-link {
+  text-decoration: none;
+  color: black;
+  display: block;
+  width: 100%;
+  padding: 20px 0 20px 30px;
+  margin: 16px 0;
+  font-size: 20px;
+  background-color: #cddbe4;
+  border: 1px solid rgb(82, 177, 221);
+  border-radius: 50px;
+}
+
+.sidebar-icon {
+  font-size: 20px;
+  margin-right: 8px;
+  color: #074979;
+}

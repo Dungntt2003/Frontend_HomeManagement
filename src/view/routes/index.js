@@ -10,8 +10,17 @@ import SignIn from "../pages/signin/signin";
 import HeaderOnly from "../../components/layout/header-only";
 import BookScheduleResult from "../pages/set-date/bookScheduleResult/bookResult";
 import Profile from "../pages/profile/profile";
+import Dashboard from "../pages/admin-management/dashboard";
+import Overview from "../pages/admin-management/overview";
+import RoomManagement from "../pages/admin-management/room-management";
+import RenterManagement from "../pages/admin-management/renter-management";
+import UserManagement from "../pages/admin-management/user-management";
+import ScheduleManagement from "../pages/admin-management/schedule-management";
 function AllRoutes() {
   const user = localStorage.getItem("user");
+  // const user = JSON.parse(localStorage.getItem("user"));
+  // console.log(user1);
+  // console.log(user);
   return (
     <Routes>
       <Route path="/" element={<Navigate to={"/homepage"} />} />
@@ -43,6 +52,26 @@ function AllRoutes() {
       />
       <Route path="/announce" element={<MainLayout component={Announce} />} />
       <Route path="/profile" element={<MainLayout component={Profile} />} />
+      <Route
+        path="/admin/overview"
+        element={<Dashboard component={Overview} />}
+      />
+      <Route
+        path="/admin/room"
+        element={<Dashboard component={RoomManagement} />}
+      />
+      <Route
+        path="/admin/renter"
+        element={<Dashboard component={RenterManagement} />}
+      />
+      <Route
+        path="/admin/schedule"
+        element={<Dashboard component={ScheduleManagement} />}
+      />
+      <Route
+        path="/admin/user"
+        element={<Dashboard component={UserManagement} />}
+      />
     </Routes>
   );
 }

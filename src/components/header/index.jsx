@@ -31,20 +31,28 @@ function Header() {
               Home Management
             </Link>
           </Navbar.Brand>
-          <Nav>
-            <Nav.Link>
-              <Link to="/bookSchedule/result" className="homepage-link">
-                Kết quả đặt lịch
-              </Link>
-            </Nav.Link>
-          </Nav>
-          <Nav className="me-auto">
-            <Nav.Link>
-              <Link to="/about" className="homepage-link">
-                Về nhà trọ
-              </Link>
-            </Nav.Link>
-          </Nav>
+          {user && (
+            <>
+              {!user.isHost && (
+                <>
+                  <Nav>
+                    <Nav.Link>
+                      <Link to="/bookSchedule/result" className="homepage-link">
+                        Kết quả đặt lịch
+                      </Link>
+                    </Nav.Link>
+                  </Nav>
+                  <Nav className="me-auto">
+                    <Nav.Link>
+                      <Link to="/about" className="homepage-link">
+                        Về nhà trọ
+                      </Link>
+                    </Nav.Link>
+                  </Nav>
+                </>
+              )}
+            </>
+          )}
           {user ? (
             <Nav>
               <Button variant="primary" className="mr-2">

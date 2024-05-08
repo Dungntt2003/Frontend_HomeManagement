@@ -17,17 +17,19 @@ function SignIn() {
     const sendPostRequest = async () => {
       try {
         const response = await authApi.login(values);
-        console.log(response);
+
         const userInfo = {
           email: values.Email,
           name: getName(values.Email),
           id: response.data.id,
+          isHost: response.data.isHost,
+          isRenter: response.data.isRenter,
         };
-        console.log(userInfo);
         localStorage.setItem("user", JSON.stringify(userInfo));
         setAlert("true");
         setTimeout(() => {
-          navigate("/homepage");
+          if (!response.data.isHost) navigate("/homepage");
+          else navigate("/admin/overview");
         }, 3000);
       } catch (e) {
         console.log(e);
