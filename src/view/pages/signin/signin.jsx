@@ -29,7 +29,7 @@ function SignIn() {
         setAlert("true");
         setTimeout(() => {
           if (!response.data.isHost) navigate("/homepage");
-          else navigate("/admin/overview");
+          else navigate("/admin/schedule");
         }, 3000);
       } catch (e) {
         console.log(e);

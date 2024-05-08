@@ -22,16 +22,15 @@ function Dashboard(props) {
         <div className="dashboard-sidebar">
           <ul className="sidebar-list">
             <li className="sidebar-item">
-              <Link to="/admin/overview" className="sidebar-link">
-                <FontAwesomeIcon className="sidebar-icon" icon={faDashboard} />
-                <span className="sidebar-text-link">Tổng quan</span>
+              <Link to="/admin/schedule" className="sidebar-link">
+                <FontAwesomeIcon className="sidebar-icon" icon={faCalendar} />
+                <span className="sidebar-text-link">Đặt lịch</span>
               </Link>
             </li>
             <li className="sidebar-item">
-              <Link to="/admin/room" className="sidebar-link">
-                <FontAwesomeIcon className="sidebar-icon" icon={faHome} />
-
-                <span className="sidebar-text-link">Phòng</span>
+              <Link to="/admin/announcement" className="sidebar-link">
+                <FontAwesomeIcon className="sidebar-icon" icon={faDashboard} />
+                <span className="sidebar-text-link">Thông báo</span>
               </Link>
             </li>
             <li className="sidebar-item">
@@ -43,10 +42,12 @@ function Dashboard(props) {
                 <span className="sidebar-text-link">Sinh viên ở trọ</span>
               </Link>
             </li>
+
             <li className="sidebar-item">
-              <Link to="/admin/schedule" className="sidebar-link">
-                <FontAwesomeIcon className="sidebar-icon" icon={faCalendar} />
-                <span className="sidebar-text-link">Đặt lịch</span>
+              <Link to="/admin/room" className="sidebar-link">
+                <FontAwesomeIcon className="sidebar-icon" icon={faHome} />
+
+                <span className="sidebar-text-link">Phòng</span>
               </Link>
             </li>
             <li className="sidebar-item">

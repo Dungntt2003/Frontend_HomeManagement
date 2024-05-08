@@ -53,7 +53,7 @@ function AllRoutes() {
       <Route path="/announce" element={<MainLayout component={Announce} />} />
       <Route path="/profile" element={<MainLayout component={Profile} />} />
       <Route
-        path="/admin/overview"
+        path="/admin/announcement"
         element={<Dashboard component={Overview} />}
       />
       <Route
