@@ -9,6 +9,10 @@ const bookScheduleApi = {
     const url = `/bookSchedule/${user_id}`;
     return axiosClient.get(url);
   },
+  getAllSchedule: () => {
+    const url = "/bookSchedule";
+    return axiosClient.get(url);
+  },
 };
 
 export default bookScheduleApi;
