@@ -13,6 +13,18 @@ const bookScheduleApi = {
     const url = "/bookSchedule";
     return axiosClient.get(url);
   },
+  getQueSchedules: () => {
+    const url = "/bookSchedule/queue";
+    return axiosClient.get(url);
+  },
+  ScheduleAccept: (id, params) => {
+    const url = `/bookSchedule/${id}/handle`;
+    return axiosClient.put(url, params);
+  },
+  ScheduleResult: (id, params) => {
+    const url = `/bookSchedule/${id}`;
+    return axiosClient.put(url, params);
+  },
 };
 
 export default bookScheduleApi;
