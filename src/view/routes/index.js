@@ -16,6 +16,8 @@ import RoomManagement from "../pages/admin-management/room-management";
 import RenterManagement from "../pages/admin-management/renter-management";
 import UserManagement from "../pages/admin-management/user-management";
 import ScheduleManagement from "../pages/admin-management/schedule-management";
+import AddNewRoom from "../pages/admin-management/room-management/add-room";
+import UpdateRoom from "../pages/admin-management/room-management/update-room";
 function AllRoutes() {
   const user = localStorage.getItem("user");
   // const user = JSON.parse(localStorage.getItem("user"));
@@ -71,6 +73,14 @@ function AllRoutes() {
       <Route
         path="/admin/user"
         element={<Dashboard component={UserManagement} />}
+      />
+      <Route
+        path="/admin/add-new-room"
+        element={<Dashboard component={AddNewRoom} />}
+      />
+      <Route
+        path="/admin/update-room"
+        element={<Dashboard component={UpdateRoom} />}
       />
     </Routes>
   );
