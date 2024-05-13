@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import formatDate from "../../../components/formatDate";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { PlusOutlined } from "@ant-design/icons";
+// import { PlusOutlined } from "@ant-design/icons";
 import { Image, Upload } from "antd";
 
 const getBase64 = (file) =>
@@ -54,7 +54,7 @@ function Profile() {
       }}
       type="button"
     >
-      <PlusOutlined />
+      {/* <PlusOutlined /> */}
       <div
         style={{
           marginTop: 8,

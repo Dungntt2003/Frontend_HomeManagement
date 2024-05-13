@@ -43,6 +43,7 @@ function RoomManagement() {
       refrigerator: item.Refrigerator,
       bathroom: item.bathroom,
       toilet: item.toilet,
+      launch: item.Launch,
     };
   });
   return (
@@ -85,6 +86,22 @@ function RoomManagement() {
                   ) : (
                     <div style={{ display: "flex", alignItems: "center" }}>
                       <div style={{ marginRight: "12px" }}>Tủ lạnh</div>
+                      <FontAwesomeIcon
+                        icon={faXmark}
+                        style={{ color: "red" }}
+                      />
+                    </div>
+                  )}
+                </>,
+                <>
+                  {item.launch === true ? (
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <div style={{ marginRight: "12px" }}>Điều hòa</div>
+                      <Checkmark size="18px" />
+                    </div>
+                  ) : (
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <div style={{ marginRight: "12px" }}>Điều hòa</div>
                       <FontAwesomeIcon
                         icon={faXmark}
                         style={{ color: "red" }}
@@ -138,7 +155,10 @@ function RoomManagement() {
               {item.content}
               <div style={{ float: "right" }}>
                 <Button type="primary">
-                  <Link to="/admin/update-room" className="room-manage-link">
+                  <Link
+                    to={`/admin/update-room/${item.title}`}
+                    className="room-manage-link"
+                  >
                     Cập nhật
                   </Link>
                 </Button>

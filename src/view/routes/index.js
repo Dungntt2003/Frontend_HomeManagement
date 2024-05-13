@@ -79,7 +79,7 @@ function AllRoutes() {
         element={<Dashboard component={AddNewRoom} />}
       />
       <Route
-        path="/admin/update-room"
+        path="/admin/update-room/:id"
         element={<Dashboard component={UpdateRoom} />}
       />
     </Routes>

@@ -1,7 +1,7 @@
 import "./signin.scss";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import { LockOutlined, UserOutlined } from "@ant-design/icons";
+// import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input, Alert } from "antd";
 import authApi from "../../../api/authApi";
 
@@ -71,7 +71,7 @@ function SignIn() {
             ]}
           >
             <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
+              // prefix={<UserOutlined className="site-form-item-icon" />}
               placeholder="Email"
             />
           </Form.Item>
@@ -85,7 +85,7 @@ function SignIn() {
             ]}
           >
             <Input
-              prefix={<LockOutlined className="site-form-item-icon" />}
+              // prefix={<LockOutlined className="site-form-item-icon" />}
               type="password"
               placeholder="Mật khẩu"
             />
