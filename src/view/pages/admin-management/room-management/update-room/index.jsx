@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Button, Form, Input, InputNumber, Switch, Upload } from "antd";
 import "./index.scss";
 import homeApi from "../../../../../api/homeApi";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function UpdateRoom() {
   const [fileList, setFileList] = useState([]);
   const { id } = useParams();
   const [room, setRoom] = useState({});
+  const navigate = useNavigate();
   const onChange = async ({ fileList: newFileList }) => {
     setFileList(newFileList);
   };
@@ -62,6 +65,20 @@ function UpdateRoom() {
       try {
         const response = await homeApi.updateHome(id, params);
         console.log(response);
+        toast.success("Cập nhập thành công", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          // transition: Bounce,
+        });
+        setTimeout(() => {
+          navigate("/admin/room");
+        }, 3000);
       } catch (err) {
         console.log(err);
       }
@@ -214,6 +231,7 @@ function UpdateRoom() {
             </Form.Item>
           </Form>
         </div>
+        <ToastContainer />
       </div>
     </div>
   );

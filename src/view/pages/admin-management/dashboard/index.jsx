@@ -58,13 +58,16 @@ function Dashboard(props) {
             </li>
           </ul>
         </div>
-        <div className="dashboard-content">
+        <div
+          className="dashboard-content"
+          style={{ marginLeft: "50px", overflow: "auto" }}
+        >
           <props.component />
         </div>
       </div>
-      <div className="footer">
+      {/* <div className="footer">
         <Footer></Footer>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -3,10 +3,14 @@ import { Button, Form, Input, InputNumber, Switch, Upload } from "antd";
 import "./index.scss";
 import homeApi from "../../../../../api/homeApi";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 function AddNewRoom() {
   const [id, setId] = useState("");
   const [fileList, setFileList] = useState([]);
+  const navigate = useNavigate();
   const onChange = async ({ fileList: newFileList }) => {
     setFileList(newFileList);
     const formData = new FormData();
@@ -58,6 +62,20 @@ function AddNewRoom() {
       try {
         const response = await homeApi.postHome(params);
         console.log(response);
+        toast.success("Tạo phòng mới thành công", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          // transition: Bounce,
+        });
+        setTimeout(() => {
+          navigate("/admin/room");
+        }, 3000);
       } catch (err) {
         console.log(err);
       }
@@ -199,6 +217,7 @@ function AddNewRoom() {
           </Form.Item>
         </Form>
       </div>
+      <ToastContainer />
     </div>
   );
 }

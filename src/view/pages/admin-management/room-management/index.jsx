@@ -1,7 +1,7 @@
 import "./index.scss";
 import React from "react";
 // import { LikeOutlined, MessageOutlined, StarOutlined } from "@ant-design/icons";
-import { List, Carousel, Button } from "antd";
+import { List, Carousel, Button, Modal } from "antd";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import homeApi from "../../../../api/homeApi";
@@ -17,6 +17,26 @@ import {
 
 function RoomManagement() {
   const [room, setRoom] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = (id) => {
+    console.log(id);
+    const deleteRoom = async () => {
+      try {
+        const response = await homeApi.deleteHome(id);
+        console.log(response);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    deleteRoom();
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     const getAllRooms = async () => {
@@ -46,6 +66,18 @@ function RoomManagement() {
       launch: item.Launch,
     };
   });
+
+  // const handleDeleteRoom = (id) => {
+  // const deleteRoom = async () => {
+  //   try {
+  //     const response = await homeApi.deleteHome(id);
+  //     console.log(response);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }
+  // deleteRoom()
+  // };
   return (
     <div className="room-container">
       <h2 className="room-header">Danh sách các phòng</h2>
@@ -153,15 +185,30 @@ function RoomManagement() {
                 title={item.title}
               />
               {item.content}
-              <div style={{ float: "right" }}>
-                <Button type="primary">
-                  <Link
-                    to={`/admin/update-room/${item.title}`}
-                    className="room-manage-link"
-                  >
-                    Cập nhật
-                  </Link>
-                </Button>
+              <div className="room-manage-btn">
+                <div className="room-manage-button">
+                  <Button type="primary">
+                    <Link
+                      to={`/admin/update-room/${item.title}`}
+                      className="room-manage-link"
+                    >
+                      Cập nhật
+                    </Link>
+                  </Button>
+                </div>
+                <div className="room-manage-button">
+                  <Button type="primary" onClick={showModal}>
+                    Xóa
+                  </Button>
+                </div>
+                <Modal
+                  title="Xác nhận xóa"
+                  open={isModalOpen}
+                  onOk={() => handleOk(item.title)}
+                  onCancel={handleCancel}
+                >
+                  <p>Bạn có chắc là thực hiện xóa phòng {item.title}</p>
+                </Modal>
               </div>
             </List.Item>
           )}
