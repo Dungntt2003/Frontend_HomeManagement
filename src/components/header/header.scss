@@ -2,6 +2,13 @@
   background-color: #fff;
   color: black;
 }
+.header-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+}
 
 .d-flex {
   width: 500%;

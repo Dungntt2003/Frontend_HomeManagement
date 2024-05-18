@@ -4,7 +4,7 @@ function HeaderOnly(props) {
   return (
     <div>
       <Header />
-      <div>
+      <div style={{ marginTop: "70px" }}>
         <props.component />
       </div>
     </div>

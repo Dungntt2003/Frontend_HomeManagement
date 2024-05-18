@@ -89,6 +89,7 @@ function ScheduleManagement() {
         };
         const response = await bookScheduleApi.ScheduleResult(id, params);
         console.log(response);
+        window.location.reload();
       } catch (e) {
         console.log(e);
       }

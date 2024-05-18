@@ -27,6 +27,7 @@ function RoomManagement() {
       try {
         const response = await homeApi.deleteHome(id);
         console.log(response);
+        window.location.reload();
       } catch (e) {
         console.log(e);
       }

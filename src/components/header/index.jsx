@@ -16,7 +16,7 @@ function Header() {
     }, 1000);
   };
   return (
-    <div>
+    <div className="header-container">
       <Navbar bg="primary" data-bs-theme="dark" className="homepage-nav">
         <Container>
           <Navbar.Brand>

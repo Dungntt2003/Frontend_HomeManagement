@@ -60,7 +60,7 @@ function Dashboard(props) {
         </div>
         <div
           className="dashboard-content"
-          style={{ marginLeft: "50px", overflow: "auto" }}
+          style={{ marginLeft: "270px", overflow: "auto" }}
         >
           <props.component />
         </div>
