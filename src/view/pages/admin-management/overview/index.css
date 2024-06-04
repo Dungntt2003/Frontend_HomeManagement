@@ -1,0 +1,33 @@
+.announcement-container {
+  padding: 30px;
+}
+
+.announcement-header {
+  font-size: 30px;
+  text-align: center;
+  font-weight: 400;
+}
+
+.announce-button-wrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.announce-button {
+  margin: 10px 10px 5px;
+}
+
+.announcement-list {
+  margin-top: 20px;
+}
+.announcement-list .ant-collapse-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+.announce-heading {
+  background-color: #d4e8f6;
+}
+.announce-header-item {
+  font-size: 16px;
+  font-weight: 600;
+  color: #074979;
+}

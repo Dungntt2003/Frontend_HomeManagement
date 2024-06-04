@@ -1,4 +1,4 @@
-import "./announce.scss";
+import "./announce.css";
 import AnnounceItem from "../announce-item/announce-item";
 
 function Announce() {
@@ -13,11 +13,3 @@ function Announce() {
 }
 
 export default Announce;
-// / const homeItems = [...Array(8)].map((_, index) => (
-//   <HomeItem key={index} title="Item" />
-// ));
-// return (
-//   <div className="homepage-container">
-//     <div className="home-item">{homeItems}</div>
-//   </div>
-// );/

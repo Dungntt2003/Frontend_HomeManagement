@@ -1,0 +1,13 @@
+.add-announce-container {
+  padding: 30px;
+}
+
+.add-announce-heading {
+  font-size: 30px;
+  text-align: center;
+  font-weight: 400;
+}
+
+.add-announce-form {
+  margin: 20px 120px 0;
+}
