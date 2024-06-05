@@ -1,0 +1,23 @@
+.use-container {
+  padding: 30px;
+}
+.user-header {
+  font-size: 30px;
+  text-align: center;
+  font-weight: 400;
+}
+.user-list-info {
+  display: flex;
+  align-items: center;
+}
+.user-dob,
+.user-university {
+  margin-left: 12px;
+  min-width: 120px;
+}
+.user-role,
+.user-room,
+.user-confirm,
+.user-datePick {
+  margin-left: 16px;
+}
