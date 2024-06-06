@@ -1,11 +1,21 @@
 import "./index.scss";
 import React, { useState, useEffect } from "react";
-import { Avatar, List, Radio, Space, Select, Button, DatePicker } from "antd";
+import {
+  Avatar,
+  List,
+  Radio,
+  Space,
+  Select,
+  Button,
+  DatePicker,
+  Input,
+} from "antd";
 import userApi from "../../../../api/userApi";
 import formatDate from "../../../../components/formatDate";
 import homeApi from "../../../../api/homeApi";
 import moment from "moment";
 const { RangePicker } = DatePicker;
+const { Search } = Input;
 
 function UserManagement() {
   const [start, setStart] = useState(null);
@@ -22,6 +32,7 @@ function UserManagement() {
     console.log(value);
     setRoom(value);
   };
+  const onSearch = (value, _e, info) => console.log(info?.source, value);
   useEffect(() => {
     const getCustomers = async () => {
       try {
@@ -66,6 +77,15 @@ function UserManagement() {
   return (
     <div className="use-container">
       <div className="user-header">Danh sách người dùng</div>
+      <div className="user-search">
+        <Search
+          placeholder="input search text"
+          onSearch={onSearch}
+          style={{
+            width: 200,
+          }}
+        />
+      </div>
       <div className="user-list">
         <List
           pagination={{
