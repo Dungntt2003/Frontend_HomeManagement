@@ -14,6 +14,9 @@ import userApi from "../../../../api/userApi";
 import formatDate from "../../../../components/formatDate";
 import homeApi from "../../../../api/homeApi";
 import moment from "moment";
+import inHomeApi from "../../../../api/inRoomApi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const { RangePicker } = DatePicker;
 const { Search } = Input;
 
@@ -24,6 +27,7 @@ function UserManagement() {
   const [name, setName] = useState([]);
   const [option, setOption] = useState(undefined);
   const [users, setUsers] = useState([]);
+  const [filter, setFilter] = useState([]);
   const handleChange = (value, index) => {
     console.log(`selected ${value}`);
     setOption(value);
@@ -32,13 +36,21 @@ function UserManagement() {
     console.log(value);
     setRoom(value);
   };
-  const onSearch = (value, _e, info) => console.log(info?.source, value);
+  const onSearch = (value) => {
+    setFilter(
+      users.filter((user) => {
+        if (value === "") return user;
+        else return user.name === value;
+      })
+    );
+  };
   useEffect(() => {
     const getCustomers = async () => {
       try {
         const response = await userApi.getAllCustomers();
         console.log(response);
         setUsers(response.data);
+        setFilter(response.data);
       } catch (err) {
         console.log(err);
       }
@@ -65,8 +77,35 @@ function UserManagement() {
     getNameHomes();
   }, []);
   const handleConfirm = (index) => {
-    console.log(index + 1);
-    console.log(room);
+    const addNewRenter = async () => {
+      try {
+        const params = {
+          room_id: room,
+          user_id: index,
+          startDate: start,
+          endDate: end,
+        };
+        const response = await inHomeApi.addRenter(params);
+        console.log(response);
+        toast.success("Chuyển khách ở trọ thành công", {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          // transition: Bounce,
+        });
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    addNewRenter();
   };
   const handleChangeDate = (value) => {
     const startDate = moment(value[0]).format("YYYY-MM-DD");
@@ -79,10 +118,10 @@ function UserManagement() {
       <div className="user-header">Danh sách người dùng</div>
       <div className="user-search">
         <Search
-          placeholder="input search text"
+          placeholder="Nhập tên muốn tìm"
           onSearch={onSearch}
           style={{
-            width: 200,
+            width: "500px",
           }}
         />
       </div>
@@ -93,7 +132,7 @@ function UserManagement() {
             align: "end",
             pageSize: 5,
           }}
-          dataSource={users}
+          dataSource={filter}
           renderItem={(item, index) => (
             <List.Item>
               <List.Item.Meta
@@ -151,7 +190,7 @@ function UserManagement() {
                         <div className="user-confirm">
                           <Button
                             type="primary"
-                            onClick={() => handleConfirm(index)}
+                            onClick={() => handleConfirm(item.id)}
                           >
                             Xác nhận
                           </Button>
@@ -165,6 +204,7 @@ function UserManagement() {
           )}
         />
       </div>
+      <ToastContainer />
     </div>
   );
 }
