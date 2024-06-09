@@ -11,7 +11,7 @@ import {
   Input,
 } from "antd";
 import userApi from "../../../../api/userApi";
-import formatDate from "../../../../components/formatDate";
+import { formatDate } from "../../../../components/formatDate";
 import homeApi from "../../../../api/homeApi";
 import moment from "moment";
 import inHomeApi from "../../../../api/inRoomApi";

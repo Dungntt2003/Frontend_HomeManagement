@@ -8,4 +8,12 @@ const formatDate = (dateString) => {
   return formattedDate;
 };
 
-export default formatDate;
+const formatDateV2 = (dateString) => {
+  const dateObject = new Date(Date.parse(dateString));
+  const month = dateObject.getMonth() + 1;
+  const year = dateObject.getFullYear();
+  const formattedDate = `${month.toString().padStart(2, "0")}-${year}`;
+  return formattedDate;
+};
+
+export { formatDate, formatDateV2 };

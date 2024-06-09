@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import userApi from "../../../api/userApi";
 import "bootstrap/dist/css/bootstrap.css";
-import formatDate from "../../../components/formatDate";
+import { formatDate } from "../../../components/formatDate";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import { PlusOutlined } from "@ant-design/icons";

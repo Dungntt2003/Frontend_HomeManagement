@@ -1,5 +1,5 @@
 import "./bookScheduleItem.scss";
-import formatDate from "../../../../../components/formatDate";
+import { formatDate } from "../../../../../components/formatDate";
 import formatPhoneNumber from "../../../../../components/formatPhone";
 function BookScheduleItem(props) {
   // console.log(props.item);

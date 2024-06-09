@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Collapse, Tag, Button, Modal } from "antd";
 import announcementApi from "../../../../api/announceApi";
 import { Link } from "react-router-dom";
-import formatDate from "../../../../components/formatDate";
+import { formatDate } from "../../../../components/formatDate";
 
 function Overview() {
   const [announce, setAnnounce] = useState([]);

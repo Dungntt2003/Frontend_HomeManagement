@@ -9,6 +9,10 @@ const inHomeApi = {
     const url = `/inRoom/${id}`;
     return axiosClient.put(url, params);
   },
+  getAllInfo: () => {
+    const url = "/inRoom";
+    return axiosClient.get(url);
+  },
 };
 
 export default inHomeApi;

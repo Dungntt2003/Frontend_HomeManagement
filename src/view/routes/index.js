@@ -20,7 +20,7 @@ import AddNewRoom from "../pages/admin-management/room-management/add-room";
 import UpdateRoom from "../pages/admin-management/room-management/update-room";
 import UpdateAnnounce from "../pages/admin-management/overview/update-announce";
 import AddAnnouncement from "../pages/admin-management/overview/add-announce";
-import RenterDetail from "../pages/admin-management/renter-management/renter-detail";
+// import RenterDetail from "../pages/admin-management/renter-management/renter-detail";
 function AllRoutes() {
   const user = localStorage.getItem("user");
   // const user = JSON.parse(localStorage.getItem("user"));
@@ -77,10 +77,10 @@ function AllRoutes() {
         path="/admin/renter"
         element={<Dashboard component={RenterManagement} />}
       />
-      <Route
+      {/* <Route
         path="/admin/renter/detail"
         element={<Dashboard component={RenterDetail} />}
-      />
+      /> */}
       <Route
         path="/admin/schedule"
         element={<Dashboard component={ScheduleManagement} />}

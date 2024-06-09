@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect, useState, useRef } from "react";
 import { Timeline, List, Select, Input, Button } from "antd";
 import bookScheduleApi from "../../../../api/bookScheduleApi";
-import formatDate from "../../../../components/formatDate";
+import { formatDate } from "../../../../components/formatDate";
 import formatPhoneNumber from "../../../../components/formatPhone";
 
 function ScheduleManagement() {
