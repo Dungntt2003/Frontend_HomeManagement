@@ -13,13 +13,20 @@ import {
 import inHomeApi from "../../../../api/inRoomApi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { formatDate, formatDateV2 } from "../../../../components/formatDate";
+import {
+  formatDate,
+  formatDateV2,
+  formatMonth,
+} from "../../../../components/formatDate";
 
 function RenterManagement() {
   const [date, setDate] = useState("");
   const [data, setData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalV2, setModalV2] = useState(false);
+  const [fillData, setFillData] = useState([]);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [listRoom, setListRoom] = useState([]);
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -77,6 +84,24 @@ function RenterManagement() {
         const response = await inHomeApi.getAllInfo();
         console.log(response);
         setData(response.data);
+        const currentMonth = new Date().getMonth() + 1;
+        console.log(currentMonth);
+        const records = response.data.flatMap((item) =>
+          item.renter.filter(
+            (record) => formatMonth(record.enddate) === currentMonth
+          )
+        );
+        // console.log(records);
+        setFillData(records);
+        const data2 = response.data.flatMap((item) =>
+          item.bill.filter(
+            (record) =>
+              formatMonth(record.month) === currentMonth &&
+              record.ispay === false
+          )
+        );
+        // console.log(data2);
+        setListRoom(data2);
       } catch (err) {
         console.log(err);
       }
@@ -282,9 +307,96 @@ function RenterManagement() {
     updateBillForRoom();
   };
 
+  const handleCreateBill = () => {
+    const createBillMonth = async () => {
+      try {
+        const response = await inHomeApi.createBill();
+        console.log(response);
+        console.log(response);
+        toast.success("Tạo hóa đơn thành công", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          // transition: Bounce,
+        });
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    createBillMonth();
+    setIsButtonDisabled(true);
+  };
+
   return (
     <div className="renter-container">
       <div className="renter-header">Quản lý từng phòng</div>
+      {new Date().getDate() >= 0 && new Date().getDate() <= 20 && (
+        <div className="renter-create-bill" style={{ margin: "24px  0 0" }}>
+          <Button
+            type="primary"
+            onClick={handleCreateBill}
+            disabled={isButtonDisabled}
+          >
+            Tạo hóa đơn tháng {new Date().getMonth() + 1}
+          </Button>
+        </div>
+      )}
+      <div className="renter-near-deadline" style={{ marginTop: "24px" }}>
+        <List
+          header={
+            <div>
+              Danh sách sinh viên hết hạn hợp đồng trong{" "}
+              {new Date().getMonth() + 1}/{new Date().getFullYear()}
+            </div>
+          }
+          bordered
+          dataSource={fillData}
+          renderItem={(item) => (
+            <List.Item>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "100%",
+                }}
+              >
+                <div className="renter-near-email">Email: {item.email}</div>
+                <div className="renter-near-name">Tên: {item.name}</div>
+                <div className="renter-near-endDate">
+                  Ngày hết hạn hợp đồng:{" "}
+                  <strong>{formatDate(item.enddate)}</strong>
+                </div>
+                <div className="renter-near-room">
+                  Phòng: <strong>{item.room_id}</strong>
+                </div>
+              </div>
+            </List.Item>
+          )}
+        />
+      </div>
+      <List
+        style={{ marginTop: "24px" }}
+        header={
+          <div>
+            Danh sách phòng chưa thanh toán hóa đơn tháng{" "}
+            {new Date().getMonth() + 1}
+          </div>
+        }
+        bordered
+        dataSource={listRoom}
+        renderItem={(item) => (
+          <List.Item style={{ width: "150px" }}>{item.room_id}</List.Item>
+        )}
+      />
       <div className="renter-room-list" style={{ marginTop: "20px" }}>
         <Collapse
           bordered={false}

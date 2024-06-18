@@ -25,6 +25,10 @@ const inHomeApi = {
     const url = `/inRoom/${id}`;
     return axiosClient.put(url, params);
   },
+  createBill: () => {
+    const url = "/inRoom/bill";
+    return axiosClient.get(url);
+  },
 };
 
 export default inHomeApi;

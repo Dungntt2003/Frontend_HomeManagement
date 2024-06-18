@@ -16,4 +16,9 @@ const formatDateV2 = (dateString) => {
   return formattedDate;
 };
 
-export { formatDate, formatDateV2 };
+const formatMonth = (dateString) => {
+  const date = new Date(dateString);
+  return date.getMonth() + 1;
+};
+
+export { formatDate, formatDateV2, formatMonth };

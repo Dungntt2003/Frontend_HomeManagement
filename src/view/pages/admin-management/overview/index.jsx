@@ -1,19 +1,33 @@
 import "./index.css";
 import React, { useEffect, useState } from "react";
-import { Collapse, Tag, Button, Modal } from "antd";
+import { Collapse, Tag, Button, Modal, Select } from "antd";
 import announcementApi from "../../../../api/announceApi";
 import { Link } from "react-router-dom";
 import { formatDate } from "../../../../components/formatDate";
 
 function Overview() {
   const [announce, setAnnounce] = useState([]);
+  const [data, setData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [tag, setTag] = useState([]);
   useEffect(() => {
     const getAnnouncements = async () => {
       try {
         const response = await announcementApi.getAnnouncements();
         setAnnounce(response.data);
-        // console.log(response);
+        setData(response.data);
+        let tags = [
+          ...new Set(response.data.flatMap((item) => item.tag.split(", "))),
+        ];
+        tags = [...tags, "Tất cả"];
+        setTag(
+          tags.map((item) => {
+            return {
+              label: item,
+              value: item,
+            };
+          })
+        );
       } catch (e) {
         console.log(e);
       }
@@ -43,6 +57,14 @@ function Overview() {
   };
   const handleCancel = () => {
     setIsModalOpen(false);
+  };
+
+  const handleChooseTag = (value) => {
+    if (value === "Tất cả") {
+      setAnnounce(data);
+      return;
+    }
+    setAnnounce(data.filter((item) => item.tag === value));
   };
 
   const items = announce.map((item, index) => {
@@ -99,10 +121,29 @@ function Overview() {
   return (
     <div className="announcement-container">
       <h3 className="announcement-header">Danh sách thông báo</h3>
-      <div className="announcement-add-btn">
-        <Link to="/admin/announcement/add-new" className="header-link">
-          <Button type="primary">Thêm thông báo</Button>
-        </Link>
+      <div
+        className="announcement-util"
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <div className="announcement-add-btn">
+          <Link to="/admin/announcement/add-new" className="header-link">
+            <Button type="primary">Thêm thông báo</Button>
+          </Link>
+        </div>
+        <div className="announcement-select">
+          <Select
+            defaultValue="Tất cả"
+            style={{
+              width: 150,
+            }}
+            onChange={handleChooseTag}
+            options={tag}
+          />
+        </div>
       </div>
       <div className="announcement-list">
         <Collapse

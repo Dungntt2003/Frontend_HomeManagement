@@ -6,3 +6,10 @@
   text-align: center;
   font-weight: 400;
 }
+
+.renter-container .ant-list-items {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
