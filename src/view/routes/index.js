@@ -21,6 +21,7 @@ import UpdateRoom from "../pages/admin-management/room-management/update-room";
 import UpdateAnnounce from "../pages/admin-management/overview/update-announce";
 import AddAnnouncement from "../pages/admin-management/overview/add-announce";
 // import RenterDetail from "../pages/admin-management/renter-management/renter-detail";
+import RenterInfo from "../pages/renter/renter-room-info";
 function AllRoutes() {
   const user = localStorage.getItem("user");
   // const user = JSON.parse(localStorage.getItem("user"));
@@ -55,8 +56,12 @@ function AllRoutes() {
         path="/bookSchedule/result"
         element={<HeaderOnly component={BookScheduleResult} />}
       />
-      <Route path="/announce" element={<MainLayout component={Announce} />} />
+      <Route path="/announce" element={<HeaderOnly component={Announce} />} />
       <Route path="/profile" element={<MainLayout component={Profile} />} />
+      <Route
+        path="/renter/info"
+        element={<HeaderOnly component={RenterInfo} />}
+      />
       <Route
         path="/admin/announcement"
         element={<Dashboard component={Overview} />}

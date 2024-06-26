@@ -383,20 +383,22 @@ function RenterManagement() {
           )}
         />
       </div>
-      <List
-        style={{ marginTop: "24px" }}
-        header={
-          <div>
-            Danh sách phòng chưa thanh toán hóa đơn tháng{" "}
-            {new Date().getMonth() + 1}
-          </div>
-        }
-        bordered
-        dataSource={listRoom}
-        renderItem={(item) => (
-          <List.Item style={{ width: "150px" }}>{item.room_id}</List.Item>
-        )}
-      />
+      <div className="renter-list-dl">
+        <List
+          style={{ marginTop: "24px" }}
+          header={
+            <div>
+              Danh sách phòng chưa thanh toán hóa đơn tháng{" "}
+              {new Date().getMonth() + 1}
+            </div>
+          }
+          bordered
+          dataSource={listRoom}
+          renderItem={(item) => (
+            <List.Item style={{ width: "150px" }}>{item.room_id}</List.Item>
+          )}
+        />
+      </div>
       <div className="renter-room-list" style={{ marginTop: "20px" }}>
         <Collapse
           bordered={false}

@@ -29,6 +29,14 @@ const inHomeApi = {
     const url = "/inRoom/bill";
     return axiosClient.get(url);
   },
+  getBillDetail: (id) => {
+    const url = `/inRoom/bill/${id}`;
+    return axiosClient.get(url);
+  },
+  getRenterDetail: (id) => {
+    const url = `/inRoom/renter/${id}`;
+    return axiosClient.get(url);
+  },
 };
 
 export default inHomeApi;

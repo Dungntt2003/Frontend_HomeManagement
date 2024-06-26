@@ -5,7 +5,7 @@ function MainLayout(props) {
   return (
     <div>
       <Header />
-      <div style={{ marginTop: "70px" }}>
+      <div style={{ marginTop: "59px" }}>
         <props.component />
       </div>
       <Footer />

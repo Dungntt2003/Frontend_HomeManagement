@@ -39,7 +39,7 @@ function Dashboard(props) {
                   className="sidebar-icon"
                   icon={faUserFriends}
                 />
-                <span className="sidebar-text-link">Sinh viên ở trọ</span>
+                <span className="sidebar-text-link">Người thuê trọ</span>
               </Link>
             </li>
 

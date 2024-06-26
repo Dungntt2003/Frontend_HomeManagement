@@ -33,12 +33,30 @@ function Header() {
           </Navbar.Brand>
           {user && (
             <>
-              {!user.isHost && (
+              {!user.isHost && !user.isRenter && (
                 <>
                   <Nav>
                     <Nav.Link>
                       <Link to="/bookSchedule/result" className="homepage-link">
                         Kết quả đặt lịch
+                      </Link>
+                    </Nav.Link>
+                  </Nav>
+                  <Nav className="me-auto">
+                    <Nav.Link>
+                      <Link to="/about" className="homepage-link">
+                        Về nhà trọ
+                      </Link>
+                    </Nav.Link>
+                  </Nav>
+                </>
+              )}
+              {!user.isHost && (
+                <>
+                  <Nav>
+                    <Nav.Link>
+                      <Link to="/announce" className="homepage-link">
+                        Thông báo
                       </Link>
                     </Nav.Link>
                   </Nav>
