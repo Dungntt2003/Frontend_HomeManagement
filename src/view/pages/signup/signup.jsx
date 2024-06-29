@@ -235,7 +235,7 @@ function SignUp() {
             name="Dob"
             rules={[{ required: true, message: "Hãy chọn năm sinh" }]}
           >
-            <DatePicker />
+            <DatePicker needConfirm />
           </Form.Item>
 
           <Form.Item

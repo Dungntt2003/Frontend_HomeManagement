@@ -1,7 +1,7 @@
 import { Navigate, Routes, Route } from "react-router-dom";
 import HomePage from "../pages/hompage";
 import AdminInfo from "../pages/admin-info/admin-info";
-import MainLayout from "../../components/layout/main-layout";
+// import HeaderOnly from "../../components/layout/main-layout";
 import HomeDetail from "../pages/home-detail/home-detail";
 import SetDate from "../pages/set-date/set-date";
 import Announce from "../pages/announce/announce";
@@ -33,31 +33,31 @@ function AllRoutes() {
       <Route
         path="/signup"
         element={
-          user ? <Navigate to="/homepage" /> : <MainLayout component={SignUp} />
+          user ? <Navigate to="/homepage" /> : <HeaderOnly component={SignUp} />
         }
       />
       <Route
         path="/signin"
         element={
-          user ? <Navigate to="/homepage" /> : <MainLayout component={SignIn} />
+          user ? <Navigate to="/homepage" /> : <HeaderOnly component={SignIn} />
         }
       />
-      <Route path="/homepage" element={<MainLayout component={HomePage} />} />
-      <Route path="/about" element={<MainLayout component={AdminInfo} />} />
+      <Route path="/homepage" element={<HeaderOnly component={HomePage} />} />
+      <Route path="/about" element={<HeaderOnly component={AdminInfo} />} />
       <Route
         path="/homeDetail/:id"
-        element={<MainLayout component={HomeDetail} />}
+        element={<HeaderOnly component={HomeDetail} />}
       />
       <Route
         path="/bookSchedule/:id"
-        element={<MainLayout component={SetDate} />}
+        element={<HeaderOnly component={SetDate} />}
       />
       <Route
         path="/bookSchedule/result"
         element={<HeaderOnly component={BookScheduleResult} />}
       />
       <Route path="/announce" element={<HeaderOnly component={Announce} />} />
-      <Route path="/profile" element={<MainLayout component={Profile} />} />
+      <Route path="/profile" element={<HeaderOnly component={Profile} />} />
       <Route
         path="/renter/info"
         element={<HeaderOnly component={RenterInfo} />}

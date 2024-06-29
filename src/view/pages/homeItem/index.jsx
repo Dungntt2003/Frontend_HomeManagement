@@ -2,8 +2,39 @@ import "./homeItem.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faToilet, faBed } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import inHomeApi from "../../../api/inRoomApi";
 import formatMoney from "../../../components/displayMoney";
+import { formatDate } from "../../../components/formatDate";
+import { Tooltip } from "antd";
 function HomeItem(props) {
+  const [data, setData] = useState([]);
+  const [minDate, setMinDate] = useState(null);
+  useEffect(() => {
+    const getAllData = async () => {
+      try {
+        const response = await inHomeApi.getAllInfo();
+        setData(
+          response.data.filter((item) => item.room_id === props.home.Name)
+        );
+        // console.log(data);
+        if (data.length > 0) {
+          const initialDate = new Date(data[0].renter[0].enddate).getTime();
+
+          const minDate = data[0].renter.reduce((min, item) => {
+            const itemDate = new Date(item.enddate).getTime();
+            return itemDate < min ? itemDate : min;
+          }, initialDate);
+          setMinDate(minDate);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    if (props.home["Max people"] === props.home["Number people"]) {
+      getAllData();
+    }
+  }, [props]);
   return (
     <div className="item-wrap">
       <div className="item-container">
@@ -18,7 +49,9 @@ function HomeItem(props) {
           <h4 className="item-name">
             {props.home.Name}
             {props.home["Max people"] === props.home["Number people"] && (
-              <span className="item-warn">(Đã đủ số người)</span>
+              <Tooltip title={`Phòng có chỗ trống vào ${formatDate(minDate)}`}>
+                <span className="item-warn">(Đã đủ số người)</span>
+              </Tooltip>
             )}
           </h4>
           <p className="item-price">Giá: {formatMoney(props.home.Price)}</p>

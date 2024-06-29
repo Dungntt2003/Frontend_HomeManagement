@@ -108,8 +108,8 @@ function UserManagement() {
     addNewRenter();
   };
   const handleChangeDate = (value) => {
-    const startDate = moment(value[0]).format("YYYY-MM-DD");
-    const endDate = moment(value[1]).format("YYYY-MM-DD");
+    const startDate = moment(new Date(value[0])).format("YYYY-MM-DD");
+    const endDate = moment(new Date(value[1])).format("YYYY-MM-DD");
     setStart(startDate);
     setEnd(endDate);
   };
