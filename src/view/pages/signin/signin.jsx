@@ -28,9 +28,16 @@ function SignIn() {
         localStorage.setItem("user", JSON.stringify(userInfo));
         setAlert("true");
         setTimeout(() => {
-          if (!response.data.isHost && !response.data.isRenter)
+          if (
+            response.data.isHost === false &&
+            response.data.isRenter === false
+          )
             navigate("/homepage");
-          if (!response.data.isHost) navigate("/renter/info");
+          else if (
+            response.data.isHost === false &&
+            response.data.isRenter === true
+          )
+            navigate("/renter/info");
           else navigate("/admin/schedule");
         }, 3000);
       } catch (e) {

@@ -33,7 +33,7 @@ function Header() {
           </Navbar.Brand>
           {user && (
             <>
-              {!user.isHost && !user.isRenter && (
+              {user.isHost === false && user.isRenter === false ? (
                 <>
                   <Nav>
                     <Nav.Link>
@@ -50,8 +50,10 @@ function Header() {
                     </Nav.Link>
                   </Nav>
                 </>
+              ) : (
+                <></>
               )}
-              {!user.isHost && (
+              {user.isHost === false && user.isRenter === true ? (
                 <>
                   <Nav>
                     <Nav.Link>
@@ -68,6 +70,8 @@ function Header() {
                     </Nav.Link>
                   </Nav>
                 </>
+              ) : (
+                <></>
               )}
             </>
           )}

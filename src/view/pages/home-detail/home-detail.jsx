@@ -5,12 +5,15 @@ import Heart from "react-heart";
 import homeApi from "../../../api/homeApi";
 import formatMoney from "../../../components/displayMoney";
 import { Checkmark } from "react-checkmark";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function HomeDetail() {
   const [room, setRoom] = useState({});
   const [images, setImages] = useState([]);
   const [active, setActive] = useState(false);
   const [currentImage, setCurrentImage] = useState();
+  const userInfo = JSON.parse(localStorage.getItem("user"));
   const handleSetImage = (image) => {
     setCurrentImage(image);
   };
@@ -29,6 +32,19 @@ function HomeDetail() {
     };
     getDetailRoom();
   }, [id]);
+  const handleClick = () => {
+    toast.warning("Vui lòng đăng ký tài khoản để đặt lịch", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      // transition: Bounce,
+    });
+  };
   return (
     <div className="home-detail-container">
       <div className="home-detail-pic-group">
@@ -119,27 +135,41 @@ function HomeDetail() {
           <div style={{ width: "2rem" }}>
             <Heart isActive={active} onClick={() => setActive(!active)} />
           </div>
-
-          <button
-            className={
-              room["Max people"] === room["Number people"]
-                ? "home-detail-disabled"
-                : "home-detail-set"
-            }
-          >
-            <Link
-              to={`/bookSchedule/${id}`}
-              className={
-                room["Max people"] === room["Number people"]
-                  ? "home-detail-disabled-link home-detail-link"
-                  : "home-detail-link"
-              }
-            >
-              Đặt lịch
-            </Link>
-          </button>
+          {userInfo ? (
+            <>
+              <button
+                className={
+                  room["Max people"] === room["Number people"]
+                    ? "home-detail-disabled"
+                    : "home-detail-set"
+                }
+              >
+                <Link
+                  to={
+                    room["Max people"] !== room["Number people"]
+                      ? `/bookSchedule/${id}`
+                      : ""
+                  }
+                  className={
+                    room["Max people"] === room["Number people"]
+                      ? "home-detail-disabled-link home-detail-link"
+                      : "home-detail-link"
+                  }
+                >
+                  Đặt lịch
+                </Link>
+              </button>
+            </>
+          ) : (
+            <>
+              <button className="home-detail-set" onClick={handleClick}>
+                Đặt lịch
+              </button>
+            </>
+          )}
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

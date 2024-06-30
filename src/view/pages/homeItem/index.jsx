@@ -7,9 +7,12 @@ import inHomeApi from "../../../api/inRoomApi";
 import formatMoney from "../../../components/displayMoney";
 import { formatDate } from "../../../components/formatDate";
 import { Tooltip } from "antd";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function HomeItem(props) {
   const [data, setData] = useState([]);
   const [minDate, setMinDate] = useState(null);
+  const userInfo = JSON.parse(localStorage.getItem("user"));
   useEffect(() => {
     const getAllData = async () => {
       try {
@@ -35,6 +38,19 @@ function HomeItem(props) {
       getAllData();
     }
   }, [props]);
+  const handleClick = () => {
+    toast.warning("Vui lòng đăng ký tài khoản để đặt lịch", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      // transition: Bounce,
+    });
+  };
   return (
     <div className="item-wrap">
       <div className="item-container">
@@ -70,20 +86,35 @@ function HomeItem(props) {
               Xem chi tiết
             </Link>
           </button>
-          <button className="item-set-date">
-            <Link
-              to={`/bookSchedule/${props.home.Name}`}
-              className={
-                props.home["Max people"] === props.home["Number people"]
-                  ? "item-link-disabled"
-                  : "item-link"
-              }
-            >
-              Đặt lịch
-            </Link>
-          </button>
+          {userInfo ? (
+            <>
+              <button className="item-set-date">
+                <Link
+                  to={
+                    props.home["Max people"] !== props.home["Number people"]
+                      ? `/bookSchedule/${props.home.Name}`
+                      : ""
+                  }
+                  className={
+                    props.home["Max people"] === props.home["Number people"]
+                      ? "item-link-disabled"
+                      : "item-link"
+                  }
+                >
+                  Đặt lịch
+                </Link>
+              </button>
+            </>
+          ) : (
+            <>
+              <button className="item-set-date" onClick={handleClick}>
+                Đặt lịch
+              </button>
+            </>
+          )}
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
