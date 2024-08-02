@@ -28,7 +28,8 @@ function HomeItem(props) {
             const itemDate = new Date(item.enddate).getTime();
             return itemDate < min ? itemDate : min;
           }, initialDate);
-          setMinDate(minDate);
+          // console.log(minDate);
+          setMinDate(new Date(minDate));
         }
       } catch (err) {
         console.log(err);

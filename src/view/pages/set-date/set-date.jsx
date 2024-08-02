@@ -54,8 +54,7 @@ function SetDate() {
     </Form.Item>
   );
   const onFinish = (e) => {
-    const selectedDate = e.Time;
-    const date = moment(selectedDate).format("YYYY-MM-DD");
+    const date = moment(new Date(e.Time)).format("YYYY-MM-DD");
     const params = {
       user_id: userInfo.id,
       name: id,
@@ -158,7 +157,7 @@ function SetDate() {
             <Form.Item
               name="Note"
               label="Ghi chú"
-              tooltip="Bạn nên ghi lại thời gian có thể đến xem phòng ngoài lịch đăng ký ở trên"
+              tooltip="Bạn nên ghi lại giờ có thể đến xem phòng"
               rules={[
                 {
                   // required: true,

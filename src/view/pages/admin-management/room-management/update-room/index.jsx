@@ -51,7 +51,6 @@ function UpdateRoom() {
   }, [id]);
   const handleFinish = (value) => {
     const params = {
-      numberPeople: value.number_people,
       maxPeople: value.max_people,
       launch: value.launch === undefined ? false : true,
       refrigerator: value.refrigerator === undefined ? false : true,
@@ -105,7 +104,7 @@ function UpdateRoom() {
             }}
             onFinish={handleFinish}
           >
-            <Form.Item label="Số người hiện tại:">
+            {/* <Form.Item label="Số người hiện tại:">
               <Form.Item name="number_people" noStyle>
                 <InputNumber
                   min={0}
@@ -121,7 +120,7 @@ function UpdateRoom() {
               >
                 người
               </span>
-            </Form.Item>
+            </Form.Item> */}
             <Form.Item label="Số người tối đa">
               <Form.Item name="max_people" noStyle>
                 <InputNumber min={1} max={6} value={room["Max people"]} />

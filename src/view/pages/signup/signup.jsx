@@ -42,8 +42,8 @@ const tailFormItemLayout = {
 function SignUp() {
   const navigate = useNavigate();
   const onFinish = (e) => {
-    const selectedDate = e.DatePicker;
-    const Dob = moment(selectedDate).format("YYYY-MM-DD");
+    // console.log(e);
+    const Dob = moment(new Date(e.Dob)).format("YYYY-MM-DD");
     const postRequest = async () => {
       const values = {
         Email: e.Email,
